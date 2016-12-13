@@ -151,6 +151,14 @@ class Pregnancies(Table):
 
         Returns:
             sequence of (name, start, end, type) tuples
+            http://www.icpsr.umich.edu/nsfg6/
+            从这里查看编码表
+            从前到后一次是，字段名、起始列、结束列、转换函数
+            caseid：被调查者的整数 id
+            prglength：怀孕周期，单位是周
+            outcome：怀孕结果整数代码。代码 1 表示活产。
+            birthord：正常出生的婴儿顺序。如：第一胎婴儿的编号是 1.如果没有正常出生，为空。
+            finalwgt：被调查者的统计权重。浮点值。
         """
         return [
             ('caseid', 1, 12, int),
@@ -192,13 +200,11 @@ class Pregnancies(Table):
 def main(name, data_dir='.'):
     resp = Respondents()
     resp.ReadRecords(data_dir)
-    print;
-    'Number of respondents', len(resp.records)
+    print( 'Number of respondents', len(resp.records));
 
     preg = Pregnancies()
     preg.ReadRecords(data_dir)
-    print;
-    'Number of pregnancies', len(preg.records)
+    print( 'Number of pregnancies', len(preg.records));
 
 
 if __name__ == '__main__':
