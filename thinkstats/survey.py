@@ -196,10 +196,11 @@ class Pregnancies(Table):
             except AttributeError:
                 pass
 
-
+#打印每个文件的行数
 def main(name, data_dir='.'):
     resp = Respondents()
     resp.ReadRecords(data_dir)
+
     print( 'Number of respondents', len(resp.records));
 
     preg = Pregnancies()
